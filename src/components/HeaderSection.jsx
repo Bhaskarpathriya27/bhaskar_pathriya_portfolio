@@ -154,15 +154,15 @@ const HeaderSection = () => {
             {/* Dynamic date */}
             <h3
               className="
-          font-semibold leading-none tracking-tight
-          text-[18vw] sm:text-[12vw] lg:text-[3.6vw]
-          mb-2
-        "
+    font-semibold leading-none tracking-tight
+    text-[18vw] sm:text-[12vw] lg:text-[3.6vw]
+    mb-2
+  "
             >
+              {new Date().getDate()}{" "}
               {new Date()
                 .toLocaleString("en-US", { month: "short" })
                 .toUpperCase()}
-              ’{new Date().getFullYear().toString().slice(-2)}
             </h3>
 
             {/* tagline */}
