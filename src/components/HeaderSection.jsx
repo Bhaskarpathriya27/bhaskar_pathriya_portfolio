@@ -188,7 +188,7 @@ const HeaderSection = () => {
               <div className="flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-end">
                 {/* Download (primary pill) */}
                 <a
-                  href="/resume/BHASKAR_FULL_STACK_DEVELOPER.pdf"
+                  href="/resume/Bhaskar_Pathriya_Resume.pdf"
                   download
                   className="
               group relative inline-flex items-center justify-center gap-2
@@ -214,7 +214,7 @@ const HeaderSection = () => {
 
                 {/* View Online (ghost) */}
                 <a
-                  href="/resume/BHASKAR_FULL_STACK_DEVELOPER.pdf"
+                  href="/resume/Bhaskar_Pathriya_Resume.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="
