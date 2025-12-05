@@ -136,11 +136,11 @@ export const projects = [
   },
   {
     id: 5,
-    name: "Neo Mobility (Personal)",
+    name: "Tesla Redesign Website",
     description:
       "Personal showcase site (Next.js 14 + Tailwind + GSAP ScrollTrigger) built for product-display and UI-motion exploration, live on Vercel.",
-    href: "https://neo-mobility.vercel.app/",
-    image: "/assets/projects/neo-mobility.png",
+    href: "https://tesla-concept-redesigned.vercel.app/",
+    image: "/assets/projects/tesla-redesign.png",
     bgImage: "/assets/backgrounds/table.jpg",
     frameworks: [
       { id: 1, name: "Next.js 14" },
@@ -152,7 +152,7 @@ export const projects = [
   },
   {
     id: 6,
-    name: "Digital Marketing Agency Site (Personal)",
+    name: "Digital Marketing Agency Site",
     description:
       "Landing-site built on Next.js 14 + Tailwind CSS + Framer Motion/UX animations, crafted for a digital-marketing agency and deployed on Vercel.",
     href: "https://digital-marketing-agency-five-livid.vercel.app/",
