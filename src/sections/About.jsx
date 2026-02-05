@@ -8,14 +8,14 @@ const About = () => {
   const text = `Passionate about clean architecture
 I build scalable, high-performance web experiences
 that blend creativity with engineering precision`;
-  const aboutText = `I’m a Full-Stack Developer driven by craft and curiosity — transforming ideas into fast, elegant, and maintainable products. 
+  const aboutText = `I’m a Full-Stack Developer driven by craft and curiosity transforming ideas into fast, elegant, and maintainable products. 
 From smooth React interfaces to reliable Node backends, I focus on building things that look great and work even better.
 
 When I’m not coding:
-⚡️ Experimenting with new frontend motion frameworks (GSAP, Framer Motion, Three.js)
-🧠 Refining side projects and contributing on GitHub
-🎯 Exploring design trends and UI animations
-☕ Planning the next big build over late-night coffee`;
+- Experimenting with new frontend motion frameworks (GSAP, Framer Motion, Three.js)
+- Refining side projects and contributing on GitHub
+- Exploring design trends and UI animations
+- Planning the next big build over late-night coffee`;
   const imgRef = useRef(null);
   useGSAP(() => {
     gsap.to("#about", {

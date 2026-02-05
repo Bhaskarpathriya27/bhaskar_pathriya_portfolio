@@ -48,7 +48,7 @@ const HeaderSection = () => {
         tl.to(
           split.chars,
           { clipPath: "inset(0% 0% 0% 0%)", stagger: 0.04, y: 0 },
-          0
+          0,
         )
           .to(imgMaskRef.current, { clipPath: "inset(0% 0% 0% 0%)" }, 0.25)
           .to(para.current, { clipPath: "inset(0% 0% 0% 0%)" }, 0.45)
@@ -57,7 +57,7 @@ const HeaderSection = () => {
           .to(resumeRef.current, { clipPath: "inset(0% 0% 0% 0%)" }, 0.7);
       });
     },
-    { scope: sectionRef }
+    { scope: sectionRef },
   );
 
   return (
@@ -65,7 +65,7 @@ const HeaderSection = () => {
       {/* NAME — stays centered behind */}
       <div
         ref={titleTextRef}
-        className="absolute top-[15vh] left-1/2 text-center -translate-x-1/2  md:text-center text-left z-0 w-full px-4"
+        className="absolute top-[15vh] left-1/2 text-center -translate-x-1/2  md:text-center z-0 w-full px-4"
       >
         <h1
           className="
