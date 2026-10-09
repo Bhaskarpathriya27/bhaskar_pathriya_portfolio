@@ -12,7 +12,7 @@ const ContactSummary = () => {
     "Collaboration",
     "Excellence",
   ];
-  const items2 = ["contact us", "contact us", "contact us"];
+  const items2 = ["let's talk", "let's talk", "let's talk"];
 
   useGSAP(() => {
     gsap.to(containerRef.current, {
@@ -38,7 +38,7 @@ const ContactSummary = () => {
           “Building <span className="italic">smooth</span>, scalable, and <br />
           <span className="font-normal">human-centered</span> web experiences{" "}
           <br />
-          that make brands <span className="text-gold">shine</span>.“
+          that make brands <span className="text-gold-ink">shine</span>.“
         </p>
       </div>
       <Marquee

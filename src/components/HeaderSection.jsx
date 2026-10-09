@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import { useGSAP, gsap, SplitText } from "../lib/gsap";
+import { onAppReady } from "../lib/appReady";
 import { GiSpottedArrowhead } from "react-icons/gi";
 import { HiOutlineExternalLink } from "react-icons/hi";
 import { FiDownload } from "react-icons/fi";
@@ -7,18 +8,17 @@ import { FiDownload } from "react-icons/fi";
 const HeaderSection = () => {
   const sectionRef = useRef(null);
   const titleTextRef = useRef(null);
-  const imgMaskRef = useRef(null);
   const para = useRef(null);
   const contact = useRef(null);
   const available = useRef(null);
   const resumeRef = useRef(null);
 
   useGSAP(
-    () => {
-      document.fonts?.ready.then(() => {
+    (context, contextSafe) => {
+      let cancelIntro = () => {};
+      document.fonts?.ready.then(contextSafe(() => {
         // safety filter: remove nulls
         const targets = [
-          imgMaskRef.current,
           para.current,
           contact.current,
           available.current,
@@ -41,21 +41,25 @@ const HeaderSection = () => {
             willChange: "clip-path",
           });
 
-        const tl = gsap.timeline({
-          defaults: { ease: "power2.out", duration: 1.2, delay: 1.2 },
-        });
+        // Elements are hidden now; the reveal waits for the page loader.
+        cancelIntro = onAppReady(contextSafe(() => {
+          const tl = gsap.timeline({
+            delay: 0.2,
+            defaults: { ease: "power2.out", duration: 1.2 },
+          });
 
-        tl.to(
-          split.chars,
-          { clipPath: "inset(0% 0% 0% 0%)", stagger: 0.04, y: 0 },
-          0,
-        )
-          .to(imgMaskRef.current, { clipPath: "inset(0% 0% 0% 0%)" }, 0.25)
-          .to(para.current, { clipPath: "inset(0% 0% 0% 0%)" }, 0.45)
-          .to(contact.current, { clipPath: "inset(0% 0% 0% 0%)" }, 0.55)
-          .to(available.current, { clipPath: "inset(0% 0% 0% 0%)" }, 0.65)
-          .to(resumeRef.current, { clipPath: "inset(0% 0% 0% 0%)" }, 0.7);
-      });
+          tl.to(
+            split.chars,
+            { clipPath: "inset(0% 0% 0% 0%)", stagger: 0.04, y: 0 },
+            0,
+          )
+            .to(para.current, { clipPath: "inset(0% 0% 0% 0%)" }, 0.45)
+            .to(contact.current, { clipPath: "inset(0% 0% 0% 0%)" }, 0.55)
+            .to(available.current, { clipPath: "inset(0% 0% 0% 0%)" }, 0.65)
+            .to(resumeRef.current, { clipPath: "inset(0% 0% 0% 0%)" }, 0.7);
+        }));
+      }));
+      return () => cancelIntro();
     },
     { scope: sectionRef },
   );
@@ -63,11 +67,9 @@ const HeaderSection = () => {
   return (
     <div ref={sectionRef} className="relative w-full text-[#262522]">
       {/* NAME — stays centered behind */}
-      <div
-        ref={titleTextRef}
-        className="absolute top-[15vh] left-1/2 text-center -translate-x-1/2  md:text-center z-0 w-full px-4"
-      >
+      <div className="absolute top-[15vh] left-1/2 text-center -translate-x-1/2  md:text-center z-0 w-full px-4">
         <h1
+          ref={titleTextRef}
           className="
       font-normal leading-[0.9]
       tracking-tight text-[#0f0f0f]
@@ -102,12 +104,12 @@ const HeaderSection = () => {
             className="
         text-base sm:text-lg md:text-xl
         leading-relaxed tracking-wide text-[#0f0f0f]/90
-        max-w-[48ch]
+        max-w-[48ch] md:max-w-[28vw]
       "
           >
-            Open to job opportunities worldwide. Passionate about building
-            polished, intuitive, and thoughtful digital experiences that leave a
-            mark.
+            Full stack engineer, 4.5+ years across fintech, automotive and
+            SaaS. React, Next.js, Node.js and FastAPI, and now LLM and agent
+            systems too. Open to roles worldwide.
           </p>
 
           <a
@@ -148,22 +150,19 @@ const HeaderSection = () => {
 
             {/* Label */}
             <span className="uppercase text-[0.68rem] sm:text-xs tracking-[0.25em] opacity-70 mb-2 sm:mb-3">
-              Available for work
+              Open to work
             </span>
 
-            {/* Dynamic date */}
-            <h3
+            {/* Where / when */}
+            <p
               className="
-    font-semibold leading-none tracking-tight
-    text-[18vw] sm:text-[12vw] lg:text-[3.6vw]
+    font-semibold leading-none tracking-tight uppercase
+    text-[9vw] sm:text-[6vw] lg:text-[2.6vw]
     mb-2
   "
             >
-              {new Date().getDate()}{" "}
-              {new Date()
-                .toLocaleString("en-US", { month: "short" })
-                .toUpperCase()}
-            </h3>
+              Remote · IST
+            </p>
 
             {/* tagline */}
             <p
@@ -198,7 +197,7 @@ const HeaderSection = () => {
               overflow-hidden
               w-full sm:w-auto
             "
-                  aria-label="Download Resume as PDF"
+                  aria-label="Download CV (PDF)"
                 >
                   <FiDownload className="text-base sm:text-lg" />
                   <span className="relative z-10">Download CV</span>
@@ -224,7 +223,7 @@ const HeaderSection = () => {
               hover:border-[#0f0f0f] transition-colors
               w-full sm:w-auto
             "
-                  aria-label="View Resume in a new tab"
+                  aria-label="View Online (opens in a new tab)"
                 >
                   <HiOutlineExternalLink className="text-base sm:text-lg" />
                   <span>View Online</span>

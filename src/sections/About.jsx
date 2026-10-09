@@ -43,7 +43,7 @@ When I’m not coding:
   return (
     <section id="about" className="min-h-screen bg-black rounded-b-4xl">
       <AnimatedHeaderSection
-        subTitle={"Cod with purpose, Built to scale"}
+        subTitle={"Code with purpose, Built to scale"}
         title={"About"}
         text={text}
         textColor={"text-white"}
@@ -52,8 +52,10 @@ When I’m not coding:
       <div className="flex flex-col items-center justify-between gap-16 px-10 pb-16 text-xl font-light tracking-wide lg:flex-row md:text-2xl lg:text-3xl text-white/60">
         <img
           ref={imgRef}
-          src="images/PERSONAL.JPG"
-          alt="man"
+          src="/images/personal.webp"
+          alt="Bhaskar Pathriya"
+          width={1000}
+          height={1250}
           className="w-md rounded-3xl filter grayscale hover:grayscale-0 transition-all duration-500"
         />
         <AnimatedTextLines text={aboutText} className={"w-full"} />

@@ -8,9 +8,9 @@ const Contact = () => {
   const text = `Looking to hire, collaborate, or bring an idea to life?
    Let’s build something impactful together.`;
   const items = [
-    "just imagin, I code",
-    "just imagin, I code",
-    "just imagin, I code",
+    "Just imagine, I code",
+    "Just imagine, I code",
+    "Just imagine, I code",
   ];
   useGSAP(() => {
     gsap.from(".social-link", {
@@ -43,16 +43,22 @@ const Contact = () => {
             <div className="social-link">
               <h2>E-mail</h2>
               <div className="w-full h-px my-2 bg-white/30" />
-              <p className="text-xl tracking-wider lowercase md:text-2xl lg:text-3xl">
+              <a
+                href="mailto:bhaskarpathriya829@gmail.com"
+                className="block text-xl tracking-wider lowercase transition-colors duration-200 md:text-2xl lg:text-3xl hover:text-white/70"
+              >
                 bhaskarpathriya829@gmail.com
-              </p>
+              </a>
             </div>
             <div className="social-link">
               <h2>Phone</h2>
               <div className="w-full h-px my-2 bg-white/30" />
-              <p className="text-xl lowercase md:text-2xl lg:text-3xl">
-                +91 80 03 90 19 49
-              </p>
+              <a
+                href="tel:+918503901949"
+                className="block text-xl lowercase transition-colors duration-200 md:text-2xl lg:text-3xl hover:text-white/70"
+              >
+                +91 85 03 90 19 49
+              </a>
             </div>
             <div className="social-link">
               <h2>Social Media</h2>
@@ -62,8 +68,9 @@ const Contact = () => {
                   <a
                     key={index}
                     target="_blank"
+                    rel="noopener noreferrer"
                     href={social.href}
-                    className="text-xs leading-loose tracking-wides uppercase md:text-sm hover:text-white/80 transition-colors duration-200"
+                    className="text-xs leading-loose tracking-wider uppercase md:text-sm hover:text-white/80 transition-colors duration-200"
                   >
                     {"{ "}
                     {social.name}
