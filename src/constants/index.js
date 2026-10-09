@@ -69,6 +69,24 @@ export const servicesData = [
 ];
 export const projects = [
   {
+    id: 7,
+    name: "QuantDesk",
+    personal: true,
+    description:
+      "My own multi-tenant algorithmic forex trading SaaS — Next.js dashboard + FastAPI engine running 13 strategies on users' own MetaTrader 5 accounts, with real-time Redis/WebSocket streaming, backtesting, risk gates and Stripe billing.",
+    href: "https://www.bhaskar-tech.xyz/",
+    image: "/assets/projects/quantdesk.jpg",
+    bgImage: "/assets/backgrounds/map.jpg",
+    frameworks: [
+      { id: 1, name: "Next.js" },
+      { id: 2, name: "FastAPI" },
+      { id: 3, name: "Python" },
+      { id: 4, name: "Redis" },
+      { id: 5, name: "TimescaleDB" },
+      { id: 6, name: "MetaTrader 5" },
+    ],
+  },
+  {
     id: 1,
     name: "V3Cars",
     description:
@@ -150,34 +168,19 @@ export const projects = [
       { id: 5, name: "UI/UX Motion" },
     ],
   },
-  {
-    id: 6,
-    name: "Digital Marketing Agency Site",
-    description:
-      "Landing-site built on Next.js 14 + Tailwind CSS + Framer Motion/UX animations, crafted for a digital-marketing agency and deployed on Vercel.",
-    href: "https://digital-marketing-agency-five-livid.vercel.app/",
-    image: "/assets/projects/digital-marketing.png",
-    bgImage: "/assets/backgrounds/curtains.jpg",
-    frameworks: [
-      { id: 1, name: "Next.js 14" },
-      { id: 2, name: "Tailwind CSS" },
-      { id: 3, name: "Framer Motion" },
-      { id: 4, name: "UI/UX Animation" },
-    ],
-  },
 ];
 
 export const socials = [
   {
-    name: "Instagram",
-    href: "https://www.instagram.com/bhaskar_pathriya_/",
+    name: "GitHub",
+    href: "https://github.com/Bhaskarpathriya27",
   },
   {
     name: "LinkedIn",
     href: "https://www.linkedin.com/in/bhaskar-pathriya-2a314818a/",
   },
   {
-    name: "GitHub",
-    href: "https://github.com/Bhaskarpathriya27",
+    name: "Instagram",
+    href: "https://www.instagram.com/bhaskar_pathriya_/",
   },
 ];

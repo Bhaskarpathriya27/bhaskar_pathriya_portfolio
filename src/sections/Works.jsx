@@ -133,16 +133,23 @@ const Works = () => {
 
             {/* title */}
             <div className="flex justify-between px-10 text-black transition-all duration-500 md:group-hover:px-12 md:group-hover:text-white">
-              <h2 className="lg:text-[32px] text-[26px] leading-none">
-                {project.name}
-              </h2>
+              <div className="flex flex-wrap items-center gap-x-3 gap-y-2 sm:gap-x-4">
+                <h2 className="lg:text-[32px] text-[26px] leading-none">
+                  {project.name}
+                </h2>
+                {project.personal && (
+                  <span className="rounded-full border border-current px-2.5 py-1 text-[10px] leading-none tracking-[0.2em] uppercase whitespace-nowrap md:text-xs">
+                    Personal Project
+                  </span>
+                )}
+              </div>
               <Icon icon="lucide:arrow-up-right" className="md:size-6 size-5" />
             </div>
             {/* divider */}
             <div className="w-full h-0.5 bg-black/80" />
 
             {/* framework */}
-            <div className="flex px-10 text-xs leading-loose uppercase transtion-all duration-500 md:text-sm gap-x-5 md:group-hover:px-12">
+            <div className="flex flex-wrap px-10 text-xs leading-loose uppercase transition-all duration-500 md:text-sm gap-x-5 md:group-hover:px-12">
               {project.frameworks.map((framework) => (
                 <p
                   key={framework.id}
@@ -154,20 +161,24 @@ const Works = () => {
             </div>
             {/* mobile preview image */}
             <div className="relative flex items-center justify-center px-10 md:hidden h-[400px]">
+              {/* lazy: below the fold on mobile, and never fetched on desktop
+                  (display:none) — keeps bandwidth free for the hero planet */}
               <img
                 src={project.bgImage}
                 alt={`${project.name}-bg-image`}
+                loading="lazy"
                 className="object-cover w-full h-full rounded-md brightness-50"
               />
               <img
                 src={project.image}
                 alt={`${project.name}-image`}
+                loading="lazy"
                 className="absolute bg-center px-14 rounded-xl"
               />
             </div>
           </a>
         ))}
-        {/* desktop Flaoting preview image */}
+        {/* desktop floating preview image */}
         <div
           ref={previewRef}
           className="fixed -top-2/6 left-0 z-50 overflow-hidden border-8 border-black pointer-events-none w-[960px] md:block hidden opacity-0"
