@@ -73,7 +73,7 @@ const Services = () => {
 
                   {/* Title */}
                   <h3 className="text-xl md:text-2xl font-medium text-white group-hover:text-white/90 flex items-center gap-2">
-                    <span className="text-sm text-white/40 tracking-wider">
+                    <span className="text-sm text-white/60 tracking-wider">
                       0{itemIndex + 1}
                     </span>
                     {item.title}

@@ -2,19 +2,22 @@
 import React, { useRef } from "react";
 import { gsap, useGSAP, ScrollTrigger } from "../lib/gsap";
 import { Link } from "react-scroll";
+import { onAppReady } from "../lib/appReady";
 
 export default function Navbar() {
   const headerRef = useRef(null);
 
-  useGSAP(() => {
+  useGSAP((context, contextSafe) => {
     const el = headerRef.current;
 
-    // 1) Initial entrance (loader ke baad)
-    gsap.fromTo(
-      el,
-      { opacity: 0, y: 20 },
-      { opacity: 1, y: 0, duration: 1, delay: 1.8, ease: "power2.out" }
-    );
+    // 1) Initial entrance (loader ke baad), just behind the hero name reveal
+    const cancelIntro = onAppReady(contextSafe(() => {
+      gsap.fromTo(
+        el,
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 1, delay: 0.8, ease: "power2.out" }
+      );
+    }));
 
     // 2) Quick setters for buttery transitions
     const toY = gsap.quickTo(el, "y", { duration: 0.35, ease: "power2.out" });
@@ -42,17 +45,18 @@ export default function Navbar() {
         }
       },
     });
+
+    return cancelIntro;
   }, []);
 
   return (
     <nav
       ref={headerRef}
-      className="fixed top-0 left-0 right-0 z-50 h-20 flex justify-between items-center px-8
-                  text-text"
+      className="fixed top-0 left-0 right-0 z-50 h-20 flex justify-between items-center px-8"
       style={{ opacity: 0 }} // (initial gsap anim will bring to 1)
     >
       <div>
-        <h1 className="text-xl font-medium">Web Developer & Designer</h1>
+        <p className="text-xl font-medium">Full Stack & AI Engineer</p>
       </div>
       <div className="md:flex gap-7 uppercase hidden">
         <NavLink>services</NavLink>
@@ -71,39 +75,32 @@ function NavLink({ children }) {
       offset={0}
       duration={2000}
       to={`${children}`}
+      href={`#${children}`}
       className="
         group relative inline-block h-6 leading-[1.5rem]
         overflow-hidden align-middle select-none cursor-pointer
       "
     >
       {/* Top label (slides up) */}
-      <Link
-        smooth
-        offset={0}
-        duration={2000}
-        to={`${children}`}
+      <span
         className="
           block will-change-transform transition-transform duration-300
           translate-y-0 group-hover:-translate-y-full
         "
       >
         {children}
-      </Link>
+      </span>
 
       {/* Bottom label (slides in from below) */}
-      <Link
-        smooth
-        offset={0}
-        duration={2000}
-        to={`${children}`}
+      <span
         className="
-          block absolute inset-0 will-change-transform transition-transform duration-300 
+          block absolute inset-0 will-change-transform transition-transform duration-300
           translate-y-full group-hover:translate-y-0
         "
         aria-hidden="true"
       >
         {children}
-      </Link>
+      </span>
     </Link>
   );
 }

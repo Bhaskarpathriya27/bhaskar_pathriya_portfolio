@@ -1,16 +1,27 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { onAppReady } from "../lib/appReady";
+import {
+  PLANET_MODEL_URL,
+  markPlanetReady,
+  shouldShowPlanet,
+} from "../lib/planet";
 
 export function Planet(props) {
   const shapeContainer = useRef(null);
   const shperesContainer = useRef(null);
   const ringContainer = useRef(null);
-  const { nodes, materials } = useGLTF("/models/Planet.glb");
+  const { nodes, materials } = useGLTF(PLANET_MODEL_URL);
+
+  useEffect(() => {
+    markPlanetReady();
+  }, []);
 
   useGSAP(() => {
-    const tl = gsap.timeline();
+    // Paused so the fly-in plays after the page loader, not behind it.
+    const tl = gsap.timeline({ paused: true });
     tl.from(shapeContainer.current.position, {
       y: 5,
       duration: 3,
@@ -38,6 +49,7 @@ export function Planet(props) {
       },
       "<"
     );
+    return onAppReady(() => tl.play());
   }, []);
 
   return (
@@ -73,4 +85,4 @@ export function Planet(props) {
   );
 }
 
-useGLTF.preload("/models/Planet.glb");
+if (shouldShowPlanet()) useGLTF.preload(PLANET_MODEL_URL);
