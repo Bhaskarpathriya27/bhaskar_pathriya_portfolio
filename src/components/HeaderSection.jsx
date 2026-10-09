@@ -104,13 +104,12 @@ const HeaderSection = () => {
             className="
         text-base sm:text-lg md:text-xl
         leading-relaxed tracking-wide text-[#0f0f0f]/90
-        max-w-[48ch]
+        max-w-[48ch] md:max-w-[28vw]
       "
           >
-            Full stack engineer with 4.5+ years across fintech, automotive and
-            SaaS. React and Next.js on the front, Node.js and FastAPI behind
-            it, and now building LLM and agent systems too. Open to roles
-            worldwide.
+            Full stack engineer, 4.5+ years across fintech, automotive and
+            SaaS. React, Next.js, Node.js and FastAPI, and now LLM and agent
+            systems too. Open to roles worldwide.
           </p>
 
           <a
